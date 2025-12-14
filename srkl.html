@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>梦幻生日祝福 - 刘雨欣</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+      body {
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            touch-action: manipulation;
+        }
+        
+        /* 通用背景图片层 - 60%透明度 */
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.6; /* 60%透明度 */
+            z-index: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        /* 页面1背景 */
+        #page1-bg {
+            background-image: url('images/background1.jpg'); /* 请替换为您的第一张图片 */
+        }
+        
+        /* 页面2背景 */
+        #page2-bg {
+            background-image: url('https://p2.ssl.qhimgs1.com/sdr/400__/t040697f4f643ee27f2.jpg'); /* 请替换为您的第二张图片 */
+            opacity: 0;
+        }
+        
+        /* 页面3背景 */
+        #page3-bg {
+            background-image: url('https://p3.ssl.qhimgs1.com/sdr/400__/t04e931971b8faa8133.jpg'); /* 请替换为您的第三张图片 */
+            opacity: 0;
+        }
+        
+        /* 页面4背景 */
+        #page4-bg {
+            background-image: url('https://p0.ssl.qhimgs1.com/sdr/400__/t04e00ce0e87ad3df10.jpg'); /* 请替换为您的第四张图片 */
+            opacity: 0;
+        }
+        
+        /* 页面5背景 */
+        #page5-bg {
+            background-image: url('https://p2.ssl.qhimgs1.com/sdr/400__/t046e81241747583472.jpg'); /* 请替换为您的第五张图片 */
+            opacity: 0;
+        }
+        
+        /* 页面6背景 */
+        #page6-bg {
+            background-image: url('images/background6.jpg'); /* 请替换为您的第六张图片 */
+            opacity: 0;
+        }
+        
+        /* 页面7背景 */
+        #page7-bg {
+            background-image: url('images/background7.jpg'); /* 请替换为您的第七张图片 */
+            opacity: 0;
+        }
+        
+        /* 背景生日标题 - 手机适配 */
+        .bg-birthday-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Nunito', sans-serif;
+            font-size: 8rem;
+            font-weight: 800;
+            color: #ff66a3;
+            -webkit-text-stroke: 4px #8B4513;
+            text-stroke: 4px #8B4513;
+            opacity: 0.12;
+            z-index: 1;
+            pointer-events: none;
+            white-space: nowrap;
+            text-shadow: 3px 3px 0 rgba(139, 69, 19, 0.2);
+            width: 100%;
+            text-align: center;
+            padding: 0 10px;
+            overflow: hidden;
+        }
+
+        /* 为字母添加纹理 */
+        .bg-birthday-title .textured-letter {
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* H字母的圆点纹理 */
+        .bg-birthday-title .letter-h:after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 30%;
+            width: 12px;
+            height: 12px;
+            background-color: #ffcc00;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+        
+        .bg-birthday-title .letter-h:before {
+            content: '';
+            position: absolute;
+            bottom: 30%;
+            right: 30%;
+            width: 14px;
+            height: 14px;
+            background-color: #ff9966;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+        
+        /* a字母的条纹纹理 */
+        .bg-birthday-title .letter-a:after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 20%;
+            width: 8px;
+            height: 40px;
+            background: linear-gradient(to bottom, #ff9966, #ffcc00);
+            border-radius: 8px;
+            opacity: 0.3;
+            transform: rotate(15deg);
+        }
+        
+        /* p字母的条纹纹理 */
+        .bg-birthday-title .letter-p:after {
+            content: '';
+            position: absolute;
+            top: 40%;
+            right: 25%;
+            width: 6px;
+            height: 25px;
+            background: linear-gradient(to bottom, #ff66a3, #ff3366);
+            border-radius: 4px;
+            opacity: 0.3;
+            transform: rotate(-10deg);
+        }
+        
+        /* y字母的圆点纹理 */
+        .bg-birthday-title .letter-y:after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            left: 40%;
+            width: 12px;
+            height: 12px;
+            background-color: #6699ff;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+        
+        /* B字母上的蜡烛装饰 */
+        .bg-birthday-title .letter-b {
+            position: relative;
+            color: #ff9966;
+        }
+        
+        .bg-birthday-title .letter-b:before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 25px;
+            background: linear-gradient(to bottom, #ffcc00, #ff9900, #ff6600);
+            border-radius: 4px;
+            top: -35px;
+            left: 40%;
+            z-index: 2;
+            opacity: 0.4;
+        }
+        
+    .bg-birthday-title .letter-b:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 14px;
+            background: #ff3300;
+            border-radius: 50%;
+            top: -38px;
+            left: 35%;
+            z-index: 3;
+            opacity: 0.4;
+            animation: bgCandleFlicker 2s infinite alternate;
+        }
+        
+        /* i字母上的蜡烛装饰 */
+        .bg-birthday-title .letter-i {
+            position: relative;
+            color: #ffcc00;
+        }
+        
+        .bg-birthday-title .letter-i:before {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 22px;
+            background: linear-gradient(to bottom, #ffcc00, #ff9900, #ff6600);
+            border-radius: 4px;
+            top: -30px;
+            left: 30%;
+            z-index: 2;
+            opacity: 0.4;
+        }
+        
+        .bg-birthday-title .letter-i:after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 12px;
+            background: #ff3300;
+            border-radius: 50%;
+            top: -33px;
+            left: 25%;
+            z-index: 3;
+            opacity: 0.4;
+            animation: bgCandleFlicker 2s infinite alternate-reverse;
+        }
+        
+        @keyframes bgCandleFlicker {
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+        
+        /* 泡泡/云朵背景 */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 220, 245, 0.6);
+            animation: float 15s infinite ease-in-out;
+            z-index: 2;
+        }
+        
+        .bubble:nth-child(odd) {
+            background: rgba(255, 240, 252, 0.7);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(10px) translateX(-10px); }
+            75% { transform: translateY(-10px) translateX(5px); }
+        }
+        
+        /* 星星 */
+        .star {
+            position: absolute;
+            background-color: white;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: twinkle 3s infinite alternate;
+            z-index: 2;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        /* 四瓣小花 */
+        .flower {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: float 12s infinite ease-in-out;
+            z-index: 2;
+        }
+        
+        .flower:before, .flower:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            border-radius: 50%;
+        }
+        
+        .flower:before {
+            transform: rotate(45deg);
+        }
+        
+        .flower:after {
+            transform: rotate(90deg);
+        }
+        
+        /* 页面容器 */
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 10;
+            overflow: hidden;
+            padding: 15px;
+        }
+        
+        .page.active {
+            display: flex;
+        }
+        
+        /* 前景生日标题 - 手机适配 */
+        .birthday-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff66a3;
+            text-shadow: 
+                2px 2px 0 #ffb3d9,
+                4px 4px 0 rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            letter-spacing: 1px;
+            z-index: 20;
+            line-height: 1.2;
+            padding: 0 10px;
+        }
+        
+        .birthday-title .b-letter {
+            display: inline-block;
+            position: relative;
+            color: #ff9966;
+        }
+        
+        .birthday-title .i-letter {
+            display: inline-block;
+            position: relative;
+            color: #ffcc00;
+        }
+        
+        /* 蜡烛装饰 */
+        .candle {
+            position: absolute;
+            width: 6px;
+            height: 18px;
+            background: linear-gradient(to top, #ff3333, #cc0000, #ff3333);
+            border-radius: 3px 3px 0 0;
+            top: -25px;
+        }
+        
+        .candle:after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff3300;
+            border-radius: 50%;
+            top: -5px;
+            left: -2px;
+            animation: flicker 0.5s infinite alternate;
+        }
+        
+        @keyframes flicker {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        
+        /* 签收按钮 - 手机适配 */
+        .receive-btn {
+            padding: 18px 30px;
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, #ff66a3, #ff9966);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(255, 102, 163, 0.4);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 20;
+            min-height: 70px;
+            width: 90%;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+        
+        .receive-btn:hover, .receive-btn:active {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(255, 102, 163, 0.6);
+        }
+        
+        .receive-btn:after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 30px;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -60%; }
+            20%, 100% { left: 120%; }
+        }
+        
+        /* 紫色祝福文字 - 手机适配 */
+        .purple-wish {
+            font-size: 2.2rem;
+            color: #b266ff;
+            text-shadow: 
+                1px 1px 0 #e6ccff,
+                2px 2px 0 rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            animation: fadeInOut 6s ease-in-out;
+            z-index: 20;
+            line-height: 1.3;
+            padding: 0 15px;
+        }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: scale(0.8); }
+            20%, 80% { opacity: 1; transform: scale(1); }
+        }
+        
+        /* 卡片祝福 - 手机适配 */
+        .card-message {
+            position: absolute;
+            padding: 12px 18px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+            font-size: 1.1rem;
+            max-width: 250px;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.5s ease;
+            z-index: 15;
+            border: 2px solid #ffccff;
+            word-wrap: break-word;
+        }
+        
+        .card-message.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .gradient-card {
+            background: linear-gradient(135deg, rgba(255, 230, 255, 0.95), rgba(255, 200, 255, 0.95));
+            border: 2px solid #ff99cc;
+        }
+        
+        /* 角色图片 - 手机适配 */
+        .character {
+            position: absolute;
+            z-index: 15;
+            filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.3));
+            border-radius: 15px;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .character img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        
+        /* 祁煜角色 - 位于右上角 */
+        .qiyu {
+            width: 130px;
+            height: 160px;
+            top: 20px;
+            right: 20px;
+            animation: floatCharacter 8s infinite ease-in-out;
+        }
+        
+        /* 孙策角色 - 位于右上角 */
+        .sunce {
+            width: 130px;
+            height: 160px;
+            top: 20px;
+            right: 20px;
+            animation: floatCharacter 7s infinite ease-in-out;
+        }
+        
+        @keyframes floatCharacter {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(2deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(-8px) rotate(-2deg); }
+        }
+        
+        /* 金色祝福 - 手机适配 */
+        .gold-wish {
+            font-size: 2.5rem;
+            color: transparent;
+            background: linear-gradient(to bottom, #ffcc00, #ff9900, #ff6600);
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow: 
+                1px 1px 0 #ffcc00,
+                2px 2px 0 rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            animation: goldGlow 2s infinite alternate;
+            z-index: 20;
+            line-height: 1.3;
+            padding: 0 15px;
+        }
+        
+        @keyframes goldGlow {
+            0% { filter: drop-shadow(0 0 3px rgba(255, 204, 0, 0.7)); }
+            100% { filter: drop-shadow(0 0 15px rgba(255, 153, 0, 0.9)); }
+        }
+        
+        /* 气球 - 手机适配 */
+        .balloon {
+            position: absolute;
+            width: 40px;
+            height: 55px;
+            border-radius: 50%;
+            z-index: 5;
+            animation: balloonFloat 20s infinite linear;
+        }
+        
+        .balloon:before {
+            content: '';
+            position: absolute;
+            width: 1.5px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.2);
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .balloon.red { background: radial-gradient(circle at 30% 30%, #ff6666, #cc0000); }
+        .balloon.blue { background: radial-gradient(circle at 30% 30%, #6699ff, #0033cc); }
+        .balloon.green { background: radial-gradient(circle at 30% 30%, #66ff99, #00cc66); }
+        .balloon.yellow { background: radial-gradient(circle at 30% 30%, #ffff66, #ffcc00); }
+        .balloon.purple { background: radial-gradient(circle at 30% 30%, #cc66ff, #6600cc); }
+        
+        @keyframes balloonFloat {
+            0% { transform: translateY(100vh) translateX(0) rotate(0deg); }
+            100% { transform: translateY(-100px) translateX(100px) rotate(10deg); }
+        }
+        
+        /* 页面6特定布局 - 调整蛋糕位置 */
+        #page6 {
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 20px;
+        }
+        
+        /* 蛋糕容器 - 调整位置 */
+        .cake-container {
+            position: relative;
+            width: 260px;
+            height: 230px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            z-index: 15;
+        }
+        
+        /* 蛋糕主体 - 手机适配 */
+        .cake {
+            position: absolute;
+            width: 220px;
+            height: 100px;
+            background: linear-gradient(to bottom, #ffd9e6, #ffb3d9, #ff99cc);
+            border-radius: 50% 50% 0 0;
+            bottom: 25px;
+            left: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cake:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 28px;
+            background: linear-gradient(to bottom, #ff80bf, #ff4da6);
+            border-radius: 50% 50% 0 0;
+            top: 0;
+        }
+        
+        .cake:after {
+            content: '';
+            position: absolute;
+            width: 250px;
+            height: 20px;
+            background: linear-gradient(to right, #ff9966, #ffcc00, #ff9966);
+            border-radius: 10px;
+            bottom: -10px;
+            left: -15px;
+        }
+        
+        /* 蜡烛样式 - 手机适配 */
+        .cake-candle {
+            position: absolute;
+            width: 10px;
+            height: 35px;
+            background: linear-gradient(to bottom, #ff3333, #cc0000, #990000);
+            border-radius: 5px 5px 0 0;
+            bottom: 120px; /* 放在蛋糕上 */
+            z-index: 20;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
+        }
+        
+        /* 蜡烛火焰效果 - 手机适配 */
+        .candle-flame {
+            position: absolute;
+            width: 14px;
+            height: 20px;
+            background: linear-gradient(to bottom, #ffff00, #ff9900, #ff3300);
+            border-radius: 50% 50% 20% 20%;
+            top: -18px;
+            left: -2px;
+            box-shadow: 0 0 12px rgba(255, 153, 0, 0.8);
+            animation: flameFlicker 0.3s infinite alternate;
+            z-index: 21;
+        }
+        
+        .candle-flame:before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            top: 4px;
+            left: 3px;
+            filter: blur(1.5px);
+        }
+        
+        @keyframes flameFlicker {
+            0%, 100% { 
+                transform: scaleY(1) scaleX(1); 
+                height: 20px;
+                width: 14px;
+            }
+            25% { 
+                transform: scaleY(1.1) scaleX(0.9); 
+                height: 22px;
+                width: 12px;
+            }
+            50% { 
+                transform: scaleY(0.9) scaleX(1.1); 
+                height: 18px;
+                width: 16px;
+            }
+            75% { 
+                transform: scaleY(1.05) scaleX(0.95); 
+                height: 21px;
+                width: 13px;
+            }
+        }
+        
+        /* 蜡烛火焰内部亮点 - 手机适配 */
+        .flame-inner {
+            position: absolute;
+            width: 6px;
+            height: 10px;
+            background: rgba(255, 255, 200, 0.9);
+            border-radius: 50% 50% 20% 20%;
+            top: 3px;
+            left: 4px;
+            filter: blur(1px);
+            animation: innerFlame 0.5s infinite alternate;
+        }
+        
+        @keyframes innerFlame {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        /* 蜡烛顶部融化效果 - 手机适配 */
+        .candle-melt {
+            position: absolute;
+            width: 13px;
+            height: 6px;
+            background: linear-gradient(to right, #ff6666, #ff3333);
+            border-radius: 6px 6px 0 0;
+            top: -6px;
+            left: -1.5px;
+            z-index: 19;
+        }
+        
+        /* 爱心祝福容器 - 手机适配 */
+        .heart-container {
+            position: absolute;
+            width: 95%;
+            height: 40%;
+            top: 60%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            pointer-events: none;
+        }
+        
+        /* 彩带消息 - 手机适配 */
+        .ribbon-message {
+            position: absolute;
+            padding: 6px 12px;
+            background: linear-gradient(45deg, #ff66a3, #ff9966, #ffcc00);
+            color: white;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 11;
+            transform: scale(0) translate(-50%, -50%);
+            transition: transform 0.6s ease;
+            white-space: nowrap;
+            border: 2px solid white;
+            text-align: center;
+            font-weight: bold;
+            opacity: 0;
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .ribbon-message.active {
+            opacity: 1;
+            transform: scale(1) translate(-50%, -50%);
+        }
+        
+        /* 烟花 - 手机适配 */
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            box-shadow: 0 0 15px 4px #ffcc00;
+            z-index: 5;
+            animation: fireworkExplode 1.5s forwards;
+        }
+        
+        @keyframes fireworkExplode {
+            0% { transform: translateY(100vh); opacity: 1; }
+            70% { opacity: 1; }
+            100% { 
+                transform: translateY(0) scale(2.5); 
+                opacity: 0; 
+                box-shadow: 
+                    0 0 4px 1.5px #ff3333,
+                    0 0 8px 4px #ff9966,
+                    0 0 12px 8px #ffcc00;
+            }
+        }
+        
+        /* 礼花筒效果 - 手机适配 */
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 16px;
+            opacity: 0;
+            z-index: 25;
+        }
+        
+        .confetti.active {
+            animation: confettiFall 3s forwards;
+        }
+        
+        @keyframes confettiFall {
+            0% { transform: translateY(-80px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        /* 最终祝福 - 手机适配 */
+        .final-wish {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-top: 20px;
+            z-index: 30;
+            position: relative;
+            padding: 0 15px;
+        }
+        
+        .colorful-text {
+            background: linear-gradient(45deg, #ff0066, #ff9900, #ffcc00, #33cc33, #3399ff, #cc66ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow 3s infinite alternate;
+            font-size: 2rem;
+        }
+        
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+        
+        /* 吹蜡烛按钮 - 手机适配 */
+        .blow-btn {
+            padding: 14px 30px;
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, #3399ff, #9966ff);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(51, 153, 255, 0.4);
+            margin-top: 20px;
+            z-index: 30;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            min-height: 60px;
+            width: 90%;
+            max-width: 300px;
+        }
+        
+        .blow-btn:hover, .blow-btn:active {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(51, 153, 255, 0.6);
+        }
+        
+        /* 蜡烛烟雾效果 - 手机适配 */
+        .candle-smoke {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: radial-gradient(circle, rgba(150, 150, 150, 0.7) 10%, transparent 70%);
+            border-radius: 50%;
+            z-index: 22;
+            animation: smokeRise 2s forwards;
+            opacity: 0;
+        }
+        
+        @keyframes smokeRise {
+            0% { transform: translateY(0) scale(0.5); opacity: 0.8; }
+            100% { transform: translateY(-80px) scale(1.5); opacity: 0; }
+        }
+        
+        /* 音乐控制按钮 - 手机适配 */
+        .music-control {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.3s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .music-control:hover, .music-control:active {
+            background: rgba(255, 255, 255, 0.35);
+            transform: scale(1.05);
+        }
+        
+        .music-control i {
+            font-size: 22px;
+            color: #ff66a3;
+        }
+        
+        /* 横屏适配 */
+        @media (orientation: landscape) and (max-height: 600px) {
+            .bg-birthday-title {
+                font-size: 5rem;
+                -webkit-text-stroke: 3px #8B4513;
+                text-stroke: 3px #8B4513;
+                opacity: 0.1;
+            }
+            
+            .birthday-title {
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .purple-wish, .gold-wish {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+            
+            .receive-btn {
+                padding: 12px 20px;
+                font-size: 1.3rem;
+                min-height: 55px;
+            }
+            
+            .cake-container {
+                transform: scale(0.7);
+                margin-top: 0;
+                margin-bottom: 5px;
+            }
+            
+            .heart-container {
+                height: 35%;
+                top: 65%;
+            }
+            
+            .final-wish {
+                font-size: 1.8rem;
+                margin-top: 15px;
+            }
+            
+            .colorful-text {
+                font-size: 1.6rem;
+            }
+            
+            .blow-btn {
+                padding: 10px 20px;
+                font-size: 1.3rem;
+                min-height: 50px;
+                margin-top: 15px;
+            }
+            
+            .character {
+                width: 120px;
+                height: 150px;
+                top: 15px;
+                right: 15px;
+            }
+        }
+        
+        /* 平板适配 */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .bg-birthday-title {
+                font-size: 10rem;
+                -webkit-text-stroke: 5px #8B4513;
+                text-stroke: 5px #8B4513;
+            }
+            
+            .birthday-title {
+                font-size: 4.5rem;
+            }
+            
+            .purple-wish, .gold-wish {
+                font-size: 3.5rem;
+            }
+            
+            .cake-container {
+                width: 300px;
+                height: 260px;
+            }
+            
+            .cake {
+                width: 260px;
+                height: 120px;
+            }
+            
+            .cake:after {
+                width: 290px;
+            }
+            
+            .character {
+                width: 150px;
+                height: 180px;
+                top: 30px;
+                right: 30px;
+            }
+        }
+        
+        /* 超大屏幕适配 */
+        @media (min-width: 1200px) {
+            .bg-birthday-title {
+                font-size: 12rem;
+                -webkit-text-stroke: 6px #8B4513;
+                text-stroke: 6px #8B4513;
+            }
+            
+            .character {
+                width: 180px;
+                height: 220px;
+                top: 30px;
+                right: 30px;
+            }
+        }
+        
+        /* 防止文字选中 */
+        .no-select {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        /* 角色标签 */
+        .character-label {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 3px 0;
+            border-radius: 0 0 10px 10px;
+            z-index: 16;
+        }
+        
+        /* 角色双图片容器 - 用于页面7 */
+        .character-dual-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 15;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+        }
+        
+        .character-dual-container .character {
+            position: relative;
+            width: 110px;
+            height: 140px;
+            margin: 0;
+            top: 0;
+            right: 0;
+        }
+        
+        /* 角色头像（小尺寸） - 用于多个角色显示 */
+        .character-portrait {
+            position: absolute;
+            z-index: 15;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .character-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* 页面7角色布局 */
+        #page7 .character-portrait.qiyu {
+            width: 110px;
+            height: 140px;
+            top: 20px;
+            right: 20px;
+        }
+        
+        #page7 .character-portrait.sunce {
+            width: 110px;
+            height: 140px;
+            top: 170px;
+            right: 20px;
+        }
+        
+        /* 页面3和5的角色标签位置 */
+        #page3 .character-label,
+        #page5 .character-label {
+            bottom: -25px;
+        }
+        
+        /* 页面7的角色标签位置 */
+        #page7 .character-label {
+            bottom: -22px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body class="no-select">
+    <!-- 背景图片层 - 每个页面一个 -->
+    <div class="background-image" id="page1-bg"></div>
+    <div class="background-image" id="page2-bg"></div>
+    <div class="background-image" id="page3-bg"></div>
+    <div class="background-image" id="page4-bg"></div>
+    <div class="background-image" id="page5-bg"></div>
+    <div class="background-image" id="page6-bg"></div>
+    <div class="background-image" id="page7-bg"></div>
+    
+    <!-- 背景生日标题 -->
+    <div class="bg-birthday-title" id="bgBirthdayTitle">
+        <span class="textured-letter letter-h">H</span>
+        <span class="textured-letter letter-a">a</span>
+        <span class="textured-letter letter-p">p</span>
+        <span class="textured-letter letter-p">p</span>
+        <span class="textured-letter letter-y">y</span>
+        <span>&nbsp;</span>
+        <span class="textured-letter letter-b">B</span>
+        <span class="textured-letter letter-i">i</span>
+        <span class="textured-letter letter-r">r</span>
+        <span class="textured-letter letter-t">t</span>
+        <span class="textured-letter letter-h2">h</span>
+        <span class="textured-letter letter-d">d</span>
+        <span class="textured-letter letter-a2">a</span>
+        <span class="textured-letter letter-y2">y</span>
+    </div>
+    
+    <!-- 泡泡背景 -->
+    <div id="bubbles"></div>
+    
+    <!-- 星星和小花 -->
+    <div id="stars"></div>
+    <div id="flowers"></div>
+    
+    <!-- 气球 -->
+    <div id="balloons"></div>
+    
+    <!-- 音乐控制 -->
+    <div class="music-control" id="musicControl">
+        <i class="fas fa-volume-up"></i>
+    </div>
+    
+    <!-- 页面1：签收 -->
+    <div class="page active" id="page1">
+        <h1 class="birthday-title">
+            H<span class="b-letter">a</span>ppy 
+            <span class="b-letter">B</span>irthday
+            <div class="candle"></div>
+            <div class="candle" style="left: 120px;"></div>
+        </h1>
+        <button class="receive-btn" id="receiveBtn">
+            <i class="fas fa-gift"></i> 你有新的生日祝福，点击签收
+        </button>
+    </div>
+    
+    <!-- 页面2：紫色祝福 -->
+    <div class="page" id="page2">
+        <div class="purple-wish" id="purpleWish">祝亲爱的保镖小姐生日快乐</div>
+    </div>
+    
+    <!-- 页面3：祁煜祝福 -->
+    <div class="page" id="page3">
+        <!-- 祁煜角色图片 -->
+        <div class="character qiyu">
+            <img src="https://p0.ssl.qhimgs1.com/sdr/400__/t040c541a74a04a9b90.jpg" alt="祁煜">
+            <div class="character-label">祁煜</div>
+        </div>
+        <div id="qiyuMessages"></div>
+    </div>
+    
+    <!-- 页面4：金色祝福 -->
+    <div class="page" id="page4">
+        <div class="gold-wish" id="goldWish">祝广陵王小姐生日快乐</div>
+    </div>
+    
+    <!-- 页面5：孙策祝福 -->
+    <div class="page" id="page5">
+        <!-- 孙策角色图片 -->
+        <div class="character sunce">
+            <img src="https://p0.ssl.qhimgs1.com/sdr/400__/t04c9b7be4177da4736.jpg" alt="孙策">
+            <div class="character-label">孙策</div>
+        </div>
+        <div id="sunceMessages"></div>
+    </div>
+    
+    <!-- 页面6：蛋糕和爱心祝福 -->
+    <div class="page" id="page6">
+        <h1 class="birthday-title" style="font-size: 2rem; margin-bottom: 5px;">祝我们亲爱的刘雨欣生日快乐</h1>
+        
+        <div class="cake-container">
+            <div class="cake"></div>
+            <!-- 主蜡烛 -->
+            <div class="cake-candle" id="mainCandle" style="left: 50%; transform: translateX(-50%);">
+                <div class="candle-melt"></div>
+                <div class="candle-flame">
+                    <div class="flame-inner"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 爱心祝福容器 -->
+        <div class="heart-container" id="heartContainer"></div>
+        
+        <!-- 烟花容器 -->
+        <div id="fireworks"></div>
+    </div>
+    
+    <!-- 页面7：吹蜡烛和最终祝福 -->
+    <div class="page" id="page7">
+        <!-- 祁煜角色图片 -->
+        <div class="character-portrait qiyu">
+            <img src="https://p0.ssl.qhimgs1.com/sdr/400__/t0425a08b2e47bf8294.jpg" alt="祁煜">
+            <div class="character-label">祁煜</div>
+        </div>
+        
+        <!-- 孙策角色图片 -->
+        <div class="character-portrait sunce">
+            <img src="https://p0.ssl.qhimgs1.com/sdr/400__/t046bd7c7270c20a1ba.jpg" alt="孙策">
+            <div class="character-label">孙策</div>
+        </div>
+        
+        <div class="cake-container">
+            <div class="cake"></div>
+            <!-- 四根蜡烛均匀分布在蛋糕上 -->
+            <div class="cake-candle" style="left: 30%;">
+                <div class="candle-melt"></div>
+                <div class="candle-flame" id="flame1">
+                    <div class="flame-inner"></div>
+                </div>
+            </div>
+            <div class="cake-candle" style="left: 40%;">
+                <div class="candle-melt"></div>
+                <div class="candle-flame" id="flame2">
+                    <div class="flame-inner"></div>
+                </div>
+            </div>
+            <div class="cake-candle" style="left: 60%;">
+                <div class="candle-melt"></div>
+                <div class="candle-flame" id="flame3">
+                    <div class="flame-inner"></div>
+                </div>
+            </div>
+            <div class="cake-candle" style="left: 70%;">
+                <div class="candle-melt"></div>
+                <div class="candle-flame" id="flame4">
+                    <div class="flame-inner"></div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="blow-btn" id="blowBtn">吹灭蜡烛</button>
+        
+        <div class="final-wish">
+            <div id="finalMessage1">祝你又长大一岁啦</div>
+            <div class="colorful-text" id="finalMessage2">愿你心想事成，万事如意</div>
+        </div>
+        
+        <!-- 礼花筒效果 -->
+        <div id="confettiContainer"></div>
+    </div>
+
+    <!-- 音频 -->
+    <audio id="birthdayAudio" loop preload="auto">
+        <source src="https://www.ximalaya.com/album/4886755">
+    </audio>
+    
+    <script>
+        // 生成背景元素 - 手机适配
+        function generateBackground() {
+            const bubblesContainer = document.getElementById('bubbles');
+            const starsContainer = document.getElementById('stars');
+            const flowersContainer = document.getElementById('flowers');
+            const balloonsContainer = document.getElementById('balloons');
+            
+            // 生成泡泡 - 手机适配减少数量
+            for (let i = 0; i < 15; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                const size = Math.random() * 80 + 30;
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${Math.random() * 100}%`;
+                bubble.style.top = `${Math.random() * 100}%`;
+                bubble.style.animationDelay = `${Math.random() * 10}s`;
+                bubblesContainer.appendChild(bubble);
+            }
+            
+            // 生成星星 - 手机适配减少数量
+            for (let i = 0; i < 20; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 15 + 8;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                starsContainer.appendChild(star);
+            }
+            
+            // 生成小花 - 手机适配减少数量
+            for (let i = 0; i < 12; i++) {
+                const flower = document.createElement('div');
+                flower.className = 'flower';
+                const size = Math.random() * 20 + 8;
+                flower.style.width = `${size}px`;
+                flower.style.height = `${size}px`;
+                flower.style.left = `${Math.random() * 100}%`;
+                flower.style.top = `${Math.random() * 100}%`;
+                flower.style.animationDelay = `${Math.random() * 8}s`;
+                flowersContainer.appendChild(flower);
+            }
+            
+            // 生成气球 - 手机适配减少数量
+            for (let i = 0; i < 8; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                const colors = ['red', 'blue', 'green', 'yellow', 'purple'];
+                balloon.classList.add(colors[Math.floor(Math.random() * colors.length)]);
+                
+                const size = Math.random() * 25 + 30;
+                balloon.style.width = `${size}px`;
+                balloon.style.height = `${size * 1.3}px`;
+                balloon.style.left = `${Math.random() * 100}%`;
+                balloon.style.animationDuration = `${Math.random() * 10 + 15}s`;
+                balloon.style.animationDelay = `${Math.random() * 5}s`;
+                balloonsContainer.appendChild(balloon);
+            }
+        }
+        
+        // 页面切换
+        let currentPage = 1;
+        const totalPages = 7;
+        let isMusicPlaying = false;
+        let birthdayAudio;
+        
+        function goToPage(pageNum) {
+            // 隐藏所有页面
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // 隐藏所有背景
+            document.querySelectorAll('.background-image').forEach(bg => {
+                bg.style.opacity = '0';
+            });
+            
+            // 显示当前页面背景
+            document.getElementById(`page${pageNum}-bg`).style.opacity = '0.6';
+            
+            // 显示目标页面
+            document.getElementById(`page${pageNum}`).classList.add('active');
+            currentPage = pageNum;
+            
+            // 根据页面执行特定动画
+            if (pageNum === 2) {
+                startPage2Animation();
+            } else if (pageNum === 3) {
+                startPage3Animation();
+            } else if (pageNum === 4) {
+                startPage4Animation();
+            } else if (pageNum === 5) {
+                startPage5Animation();
+            } else if (pageNum === 6) {
+                startPage6Animation();
+            } else if (pageNum === 7) {
+                startPage7Animation();
+            }
+        }
+        
+        // 初始化音乐
+        function initMusic() {
+            birthdayAudio = document.getElementById('birthdayAudio');
+            birthdayAudio.volume = 0.5;
+            
+            // 设置音乐控制按钮事件
+            document.getElementById('musicControl').addEventListener('click', function() {
+                if (isMusicPlaying) {
+                    birthdayAudio.pause();
+                    this.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                } else {
+                    birthdayAudio.play().catch(e => {
+                        console.log("音频播放被阻止，需要用户交互");
+                    });
+                    this.innerHTML = '<i class="fas fa-volume-up"></i>';
+                }
+                isMusicPlaying = !isMusicPlaying;
+            });
+            
+            // 添加触摸事件支持移动端
+            document.getElementById('musicControl').addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                if (isMusicPlaying) {
+                    birthdayAudio.pause();
+                    this.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                } else {
+                    birthdayAudio.play().catch(e => {
+                        console.log("音频播放被阻止，需要用户交互");
+                    });
+                    this.innerHTML = '<i class="fas fa-volume-up"></i>';
+                }
+                isMusicPlaying = !isMusicPlaying;
+            });
+        }
+        
+        // 页面2动画：紫色祝福
+        function startPage2Animation() {
+            const purpleWish = document.getElementById('purpleWish');
+            purpleWish.style.animation = 'none';
+            setTimeout(() => {
+                purpleWish.style.animation = 'fadeInOut 6s ease-in-out';
+                
+                // 6秒后自动翻页
+                setTimeout(() => {
+                    goToPage(3);
+                }, 6000);
+            }, 50);
+        }
+        
+        // 祁煜的祝福语
+        const qiyuMessages = [
+            "保镖小姐，生日快乐！今天的你比任何艺术品都耀眼。",
+            "你知道吗？你的笑容比我的调色盘上最亮的颜色还要灿烂。",
+            "愿你新的一岁，每一天都像我们初遇时那样充满惊喜。",
+            "在我眼中，你永远是最特别的那道风景。",
+            "生日快乐！今天允许你暂时放下保镖的职责，好好享受。",
+            "你的存在本身，就是一件完美的艺术品。",
+            "愿你的每一天都像海边的日出，充满希望与温暖。",
+            "今天，就让全世界为你庆祝。",
+            "你的勇气和坚定，是我见过最美的品质。",
+            "生日快乐！希望我的祝福能像颜料一样，为你的生活添彩。",
+            "愿你的新一岁，像我的画作一样充满色彩与想象力。",
+            "你不仅是保镖，更是我灵感的源泉。",
+            "今天的主角是你，我的保镖小姐。",
+            "愿你的生日充满甜蜜，就像你保护我时的专注一样。",
+            "你的生日，比任何艺术展都重要。",
+            "愿你永远保持那份独特的魅力与力量。",
+            "生日快乐！愿你的生活像一幅完美的画作。",
+            "你是我见过最坚韧又最温柔的人。",
+            "愿新的一岁，带给你更多美好与惊喜。",
+            "今天，请接受我最真挚的祝福，生日快乐！"
+        ];
+        
+        // 页面3动画：祁煜的20条祝福 - 手机适配
+        function startPage3Animation() {
+            const container = document.getElementById('qiyuMessages');
+            container.innerHTML = '';
+            
+            let messageIndex = 0;
+            
+            function showNextMessage() {
+                if (messageIndex >= qiyuMessages.length) {
+                    // 所有消息显示完后等待3秒翻页
+                    setTimeout(() => {
+                        goToPage(4);
+                    }, 3000);
+                    return;
+                }
+                
+                const message = document.createElement('div');
+                message.className = 'card-message';
+                message.textContent = qiyuMessages[messageIndex];
+                
+                // 随机位置，但确保在屏幕可见区域内，避开右上角角色图片
+                const x = Math.random() * 70 + 10;
+                const y = Math.random() * 70 + 10;
+                message.style.left = `${x}%`;
+                message.style.top = `${y}%`;
+                
+                container.appendChild(message);
+                
+                // 显示消息
+                setTimeout(() => {
+                    message.classList.add('active');
+                }, 100);
+                
+                // 2.5秒后隐藏消息
+                setTimeout(() => {
+                    message.classList.remove('active');
+                }, 2500);
+                
+                messageIndex++;
+                
+                // 每隔0.5秒显示下一条
+                setTimeout(showNextMessage, 500);
+            }
+            
+            // 开始显示消息
+            setTimeout(showNextMessage, 1000);
+        }
+        
+        // 页面4动画：金色祝福
+        function startPage4Animation() {
+            const goldWish = document.getElementById('goldWish');
+            goldWish.style.animation = 'none';
+            setTimeout(() => {
+                goldWish.style.animation = 'goldGlow 2s infinite alternate, fadeInOut 6s ease-in-out';
+                
+                // 6秒后自动翻页
+                setTimeout(() => {
+                    goToPage(5);
+                }, 6000);
+            }, 50);
+        }
+        
+        // 孙策的祝福语
+        const sunceMessages = [
+            "广陵王小姐，生日快乐！今天咱们不练兵，只庆祝！",
+            "祝你生日快乐，像战场上得胜一样开心！",
+            "愿你的新一岁，像战马一样奔腾向前！",
+            "生日快乐！今天你是江东最尊贵的客人！",
+            "你的勇气，连最勇猛的战士都会敬佩！",
+            "愿你的每一天都充满阳光和力量！",
+            "生日快乐！让我们举杯庆祝！",
+            "你是我见过最有胆识的女子！",
+            "愿新的一岁，带给你更多胜利和荣耀！",
+            "生日快乐！愿你的生活像凯旋的军队一样辉煌！",
+            "你的智慧与勇气，是我最欣赏的品质！",
+            "今天，整个江东都为你庆祝！",
+            "生日快乐！愿你的未来一片光明！",
+            "你不仅是广陵王，更是我们的骄傲！",
+            "愿你的生日充满欢声笑语！",
+            "生日快乐！今天你是绝对的主角！",
+            "愿你的新一岁，像我的长枪一样锐不可当！",
+            "你是我最尊敬的朋友，生日快乐！",
+            "愿你的每一天都像战场上的朝阳一样充满希望！",
+            "生日快乐！接受我最诚挚的祝福！"
+        ];
+        
+        // 页面5动画：孙策的20条祝福 - 手机适配
+        function startPage5Animation() {
+            const container = document.getElementById('sunceMessages');
+            container.innerHTML = '';
+            
+            let messageIndex = 0;
+            
+            function showNextMessage() {
+                if (messageIndex >= sunceMessages.length) {
+                    // 所有消息显示完后等待3秒翻页
+                    setTimeout(() => {
+                        goToPage(6);
+                    }, 3000);
+                    return;
+                }
+                
+                const message = document.createElement('div');
+                message.className = 'card-message gradient-card';
+                message.textContent = sunceMessages[messageIndex];
+                
+                // 随机位置，但确保在屏幕可见区域内，避开右上角角色图片
+                const x = Math.random() * 70 + 10;
+                const y = Math.random() * 70 + 10;
+                message.style.left = `${x}%`;
+                message.style.top = `${y}%`;
+                
+                container.appendChild(message);
+                
+                // 显示消息
+                setTimeout(() => {
+                    message.classList.add('active');
+                }, 100);
+                
+                // 0.5秒后开始进入动画
+                message.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
+                
+                // 2.5秒后隐藏消息
+                setTimeout(() => {
+                    message.classList.remove('active');
+                }, 2500);
+                
+                messageIndex++;
+                
+                // 每隔0.5秒显示下一条
+                setTimeout(showNextMessage, 500);
+            }
+            
+            // 开始显示消息
+            setTimeout(showNextMessage, 1000);
+        }
+        
+        // 刘雨欣的50条祝福语
+        const liuyuxinMessages = [
+            "刘雨欣，生日快乐！", "愿你每天开心！", "健康平安永相伴！",
+            "事业顺利步步高！", "爱情甜蜜蜜！", "笑容永远灿烂！",
+            "梦想都成真！", "好运常相伴！", "越来越美丽！",
+            "心想事成！", "万事如意！", "天天好心情！",
+            "财源滚滚来！", "友谊长存！", "家庭幸福！",
+            "快乐无限！", "青春永驻！", "活力满满！",
+            "自信美丽！", "聪明伶俐！", "才华横溢！",
+            "前程似锦！", "一帆风顺！", "笑口常开！",
+            "平安喜乐！", "无忧无虑！", "光芒万丈！",
+            "星光闪耀！", "温暖如春！", "甜蜜幸福！",
+            "收获满满！", "惊喜不断！", "精彩纷呈！",
+            "独一无二！", "闪耀夺目！", "美好如初！",
+            "天天向上！", "步步高升！", "快乐加倍！",
+            "幸福满满！", "阳光灿烂！", "温暖如你！",
+            "美好如期！", "梦想启航！", "未来可期！",
+            "精彩无限！", "岁月静好！", "时光温柔！",
+            "爱你所爱！", "行你所行！"
+        ];
+        
+        // 页面6动画：蛋糕和爱心祝福 - 手机适配
+        function startPage6Animation() {
+            const container = document.getElementById('heartContainer');
+            container.innerHTML = '';
+            
+            // 获取容器尺寸
+            const containerRect = container.getBoundingClientRect();
+            const containerWidth = containerRect.width;
+            const containerHeight = containerRect.height;
+            
+            // 生成爱心形状的坐标 - 调整位置和大小，使其在蛋糕下方
+            const centerX = containerWidth / 2;
+            const centerY = containerHeight / 2 + 10; // 稍微下移一点
+            const heartPoints = generateHeartPoints(50, centerX, centerY, 8); // 调整爱心大小
+            
+            let messageIndex = 0;
+            const fireworksContainer = document.getElementById('fireworks');
+            
+            // 显示消息函数
+            function showNextMessage() {
+                if (messageIndex >= liuyuxinMessages.length) {
+                    // 所有消息显示完后显示吹蜡烛提示
+                    setTimeout(() => {
+                        const prompt = document.createElement('div');
+                        prompt.className = 'card-message active';
+                        prompt.textContent = "现在来吹灭你的蜡烛吧";
+                        prompt.style.position = 'absolute';
+                        prompt.style.top = '20%';
+                        prompt.style.left = '50%';
+                        prompt.style.transform = 'translate(-50%, -50%)';
+                        prompt.style.fontSize = '1.5rem';
+                        prompt.style.backgroundColor = 'rgba(255, 102, 163, 0.9)';
+                        prompt.style.color = 'white';
+                        prompt.style.zIndex = '30';
+                        prompt.style.padding = '15px 25px';
+                        document.getElementById('page6').appendChild(prompt);
+                        
+                        // 3秒后翻页
+                        setTimeout(() => {
+                            goToPage(7);
+                        }, 3000);
+                    }, 1000);
+                    return;
+                }
+                
+                const message = document.createElement('div');
+                message.className = 'ribbon-message';
+                message.textContent = liuyuxinMessages[messageIndex];
+                
+                // 随机颜色
+                const colors = ['#ff66a3', '#ff9966', '#ffcc00', '#66cc66', '#6699ff', '#cc66ff'];
+                message.style.background = `linear-gradient(45deg, ${colors[messageIndex % colors.length]}, ${colors[(messageIndex + 1) % colors.length]})`;
+                
+                // 使用爱心坐标
+                const point = heartPoints[messageIndex];
+                message.style.left = `${point.x}px`;
+                message.style.top = `${point.y}px`;
+                
+                container.appendChild(message);
+                
+                // 显示消息
+                setTimeout(() => {
+                    message.classList.add('active');
+                }, 50);
+                
+                // 随机放烟花
+                if (Math.random() > 0.7) {
+                    createFirework();
+                }
+                
+                messageIndex++;
+                
+                // 快速显示下一条（0.15秒间隔）
+                setTimeout(showNextMessage, 150);
+            }
+            
+            // 创建烟花 - 手机适配
+            function createFirework() {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                
+                // 随机位置，但避开蛋糕区域
+                const x = Math.random() * 80 + 10;
+                const y = Math.random() * 40 + 10; // 主要在上半部分
+                firework.style.left = `${x}%`;
+                firework.style.top = `${y}%`;
+                
+                // 随机颜色
+                const colors = ['#ff3333', '#ff9966', '#ffcc00', '#33cc33', '#3399ff', '#cc66ff'];
+                firework.style.boxShadow = `0 0 15px 4px ${colors[Math.floor(Math.random() * colors.length)]}`;
+                
+                fireworksContainer.appendChild(firework);
+                
+                // 动画结束后移除
+                setTimeout(() => {
+                    firework.remove();
+                }, 1500);
+            }
+            
+            // 开始显示消息
+            setTimeout(showNextMessage, 1000);
+            
+            // 定期放烟花
+            setInterval(createFirework, 2000);
+        }
+        
+        // 生成爱心形状的坐标
+        function generateHeartPoints(count, centerX, centerY, scale = 8) {
+            const points = [];
+            for (let i = 0; i < count; i++) {
+                const t = i / count * Math.PI * 2;
+                // 爱心参数方程
+                const x = 16 * Math.pow(Math.sin(t), 3);
+                const y = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
+                
+                // 缩放和平移
+                const px = centerX + x * scale;
+                const py = centerY - y * scale; // 注意y轴反转
+                
+                points.push({x: px, y: py});
+            }
+            return points;
+        }
+        
+        // 页面7动画：吹蜡烛和最终祝福
+        function startPage7Animation() {
+            // 初始化蜡烛火焰
+            const flames = document.querySelectorAll('.candle-flame');
+            flames.forEach(flame => {
+                flame.style.display = 'block';
+                flame.style.animation = 'flameFlicker 0.3s infinite alternate';
+            });
+            
+            // 初始化最终消息
+            const finalMessage1 = document.getElementById('finalMessage1');
+            const finalMessage2 = document.getElementById('finalMessage2');
+            finalMessage1.style.opacity = '0';
+            finalMessage2.style.opacity = '0';
+            
+            // 设置吹蜡烛按钮事件
+            document.getElementById('blowBtn').addEventListener('click', blowCandles);
+            // 添加触摸事件
+            document.getElementById('blowBtn').addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                blowCandles();
+            });
+        }
+        
+        // 吹蜡烛函数
+        function blowCandles() {
+            const flames = document.querySelectorAll('.candle-flame');
+            const blowBtn = document.getElementById('blowBtn');
+            
+            // 禁用按钮
+            blowBtn.disabled = true;
+            blowBtn.textContent = "许愿中...";
+            
+            // 创建吹风效果
+            createWindEffect();
+            
+            // 逐个吹灭蜡烛
+            flames.forEach((flame, index) => {
+                setTimeout(() => {
+                    // 创建烟雾效果
+                    createSmoke(flame.parentElement);
+                    
+                    // 火焰熄灭动画
+                    flame.style.animation = 'none';
+                    flame.style.opacity = '0';
+                    flame.style.transform = 'scale(0.5)';
+                    flame.style.transition = 'all 0.5s ease';
+                    
+                    // 隐藏内部火焰
+                    const innerFlame = flame.querySelector('.flame-inner');
+                    if (innerFlame) {
+                        innerFlame.style.opacity = '0';
+                    }
+                    
+                }, index * 250);
+            });
+            
+            // 所有蜡烛吹灭后显示最终消息和礼花
+            setTimeout(() => {
+                // 显示最终消息
+                const finalMessage1 = document.getElementById('finalMessage1');
+                const finalMessage2 = document.getElementById('finalMessage2');
+                
+                finalMessage1.style.transition = 'opacity 1s ease';
+                finalMessage1.style.opacity = '1';
+                
+                setTimeout(() => {
+                    finalMessage2.style.transition = 'opacity 1.5s ease';
+                    finalMessage2.style.opacity = '1';
+                }, 500);
+                
+                // 创建礼花筒效果
+                createConfetti();
+                
+                // 改变按钮文本
+                blowBtn.textContent = "愿望已送达！";
+            }, flames.length * 250 + 500);
+        }
+        
+        // 创建烟雾效果 - 手机适配
+        function createSmoke(candle) {
+            const smoke = document.createElement('div');
+            smoke.className = 'candle-smoke';
+            
+            // 获取蜡烛位置
+            const candleRect = candle.getBoundingClientRect();
+            smoke.style.left = `${candleRect.left + candleRect.width/2 - 12}px`;
+            smoke.style.top = `${candleRect.top - 15}px`;
+            
+            document.getElementById('page7').appendChild(smoke);
+            
+            // 动画结束后移除
+            setTimeout(() => {
+                smoke.remove();
+            }, 2000);
+        }
+        
+        // 创建吹风效果 - 手机适配
+        function createWindEffect() {
+            const windEffect = document.createElement('div');
+            windEffect.style.position = 'absolute';
+            windEffect.style.width = '150px';
+            windEffect.style.height = '80px';
+            windEffect.style.background = 'radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%)';
+            windEffect.style.borderRadius = '50%';
+            windEffect.style.top = '50%';
+            windEffect.style.left = '50%';
+            windEffect.style.transform = 'translate(-50%, -50%)';
+            windEffect.style.zIndex = '23';
+            windEffect.style.animation = 'windBlow 1s forwards';
+            
+            document.getElementById('page7').appendChild(windEffect);
+            
+            // 添加windBlow动画到样式表
+            const styleSheet = document.styleSheets[0];
+            if (!document.getElementById('windAnimation')) {
+                const style = document.createElement('style');
+                style.id = 'windAnimation';
+                style.textContent = `
+                    @keyframes windBlow {
+                        0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+                        50% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+                        100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            setTimeout(() => {
+                windEffect.remove();
+            }, 1000);
+        }
+        
+        // 创建礼花筒效果 - 手机适配
+        function createConfetti() {
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#ff3333', '#ff9966, #ffcc00', '#33cc33', '#3399ff', '#cc66ff', '#ff66a3'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                // 随机颜色
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // 随机位置
+                confetti.style.left = `${Math.random() * 100}%`;
+                
+                // 随机大小
+                const size = Math.random() * 12 + 4;
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size * 0.5}px`;
+                
+                // 随机动画延迟
+                confetti.style.animationDelay = `${Math.random() * 0.5}s`;
+                
+                container.appendChild(confetti);
+                
+                // 激活动画
+                setTimeout(() => {
+                    confetti.classList.add('active');
+                }, 10);
+                
+                // 动画结束后移除
+                setTimeout(() => {
+                    confetti.remove();
+                }, 3000);
+            }
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 生成背景
+            generateBackground();
+            
+            // 初始化音乐
+            initMusic();
+            
+            // 设置初始背景（页面1背景）
+            document.getElementById('page1-bg').style.opacity = '0.6';
+            
+            // 签收按钮事件
+            document.getElementById('receiveBtn').addEventListener('click', function() {
+                // 播放音乐
+                birthdayAudio.play().catch(e => {
+                    console.log("音频播放被阻止，需要用户交互");
+                });
+                isMusicPlaying = true;
+                document.getElementById('musicControl').innerHTML = '<i class="fas fa-volume-up"></i>';
+                
+                // 切换到第二页
+                setTimeout(() => {
+                    goToPage(2);
+                }, 500);
+                
+                // 按钮动画
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+            
+            // 添加触摸事件
+            document.getElementById('receiveBtn').addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                // 播放音乐
+                birthdayAudio.play().catch(e => {
+                    console.log("音频播放被阻止，需要用户交互");
+                });
+                isMusicPlaying = true;
+                document.getElementById('musicControl').innerHTML = '<i class="fas fa-volume-up"></i>';
+                
+                // 切换到第二页
+                setTimeout(() => {
+                    goToPage(2);
+                }, 500);
+                
+                // 按钮动画
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
